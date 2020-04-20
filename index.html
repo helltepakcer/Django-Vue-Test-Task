@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous"
+</head>
+<body>
+<style>
+.close {
+position: sticky;
+right: 32px;
+padding-top: 15px;
+width: 20px;
+height: 20px;
+opacity: 0.1;
+}
+.close:hover {
+opacity: 0.4;
+}
+.close:before, .close:after {
+position: absolute;
+top: 15px;
+left: 15px;
+content: ' ';
+height: 25px;
+width: 2px;
+background-color: #333;
+}
+.close:before {
+transform: rotate(45deg);
+}
+.close:after {
+transform: rotate(-45deg);
+}
+
+.add_but {
+position: sticky;
+left: 15px;
+padding-top: 15px;
+width: 20px;
+height: 20px;
+opacity: 0.1;
+}
+.add_but:hover {
+opacity: 0.4;
+}
+.add_but:before, .add_but:after {
+position: absolute;
+top: 15px;
+left: 15px;
+content: ' ';
+height: 25px;
+width: 2px;
+background-color: #333;
+}
+.add_but:before {
+transform: rotate(0deg);
+}
+.add_but:after {
+transform: rotate(90deg);
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #FFEFBA;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #FFEFBA);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.container {
+    max-width: 640px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+}
+
+ul.ks-cboxtags {
+    list-style: none;
+    padding: 10px;
+}
+ul.ks-cboxtags li{
+
+}
+ul.ks-cboxtags li label{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    border: 2px solid rgba(139, 139, 139, .3);
+    color: #adadad;
+    border-radius: 25px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li label {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+ul.ks-cboxtags li label::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+    border: 2px solid #1bdbf8;
+    background-color: #12bbd4;
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+  display: absolute;
+}
+ul.ks-cboxtags li input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+ul.ks-cboxtags li input[type="checkbox"]:focus + label {
+  border: 2px solid #e9a1ff;
+}
+
+.form__input {
+  margin-left: 35px;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 1.2rem;
+
+  padding: 10px;
+  border-radius: 2px;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  width: 50%;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+</style>
+
+<!-- production version, optimized for size and speed -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!-- axios cdn import -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<div class="container" id="app">
+
+    <div class="container"><h1>TODO LIST</h1></div>
+  <ul class="ks-cboxtags" >
+    <task :data="data" v-for="(data, index) in tasks" :key="data.id" @done="done_task(index)" @db_delete="db_delete(data.id)" @status_changer="status_changer(data.id, data.status)"></task>
+
+  </ul>
+
+    <div class="form__group">
+  <span class="add_but" @click="add_task()"></span><input type="text" v-model="new_task.title" class="form__input" id="name" placeholder="New Item" required="" />
+    </div>
+</div>
+
+ <script src="script.js"></script>
+</body>
+</html>
