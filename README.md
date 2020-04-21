@@ -1,6 +1,6 @@
 # Django-Vue-Test-Task
 
-![Image](https://image.prntscr.com/image/5yTQE_tKRE6TyjEXaT3VxA.png)
+![Image](https://image.prntscr.com/image/oHqjxtxISMKqYeiXF5xGMw.png)
 
 1) git clone https://github.com/small4ek/Django-Vue-Test-Task.git
 2) make sure that you activate venv
