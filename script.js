@@ -62,8 +62,16 @@ var vue = new Vue({
                 HTTP.delete(item)
             });
             index_to_delete.forEach(async function (item, index, array){ // delete data in fron-end
-                item_to_delete = all_items.indexOf(item)
-                await all_items.splice(item_to_delete, 1)
+                console.log(all_items)
+                item_to_delete = '';
+                all_items.forEach(function (frontItem, index) {
+                    console.log(all_items['id'])
+                    if (frontItem.id == item) {
+                        all_items.splice(index, 1)
+                    }
+                    return all_items;
+                })
+
             });
             this.tasks = all_items;
             return this.tasks;
