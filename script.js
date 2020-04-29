@@ -65,7 +65,6 @@ var vue = new Vue({
                 console.log(all_items)
                 item_to_delete = '';
                 all_items.forEach(function (frontItem, index) {
-                    console.log(all_items['id'])
                     if (frontItem.id == item) {
                         all_items.splice(index, 1)
                     }
